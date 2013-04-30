@@ -1,0 +1,3 @@
+
+
+void printFatalError(int errorcode);

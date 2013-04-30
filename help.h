@@ -1,0 +1,3 @@
+
+
+void help(char mode);

@@ -1,0 +1,31 @@
+typedef struct FAULT *FAULTPTR;
+typedef	int level;
+typedef struct GATE *GATEPTR;
+typedef struct EVENT *EVENTPTR;
+typedef		int status;
+
+void printinputs(FILE *fp, int npi, int nth_bit);
+void printoutputs(FILE *fp, int npo, int nth_bit);
+void print_test_topic(FILE *fp, int npi, int npo, char name[]);
+void printio(FILE *fp, int npi, int npo, int nth_bit, int start);
+void printio(FILE *fp, int npi, int npo, int nth_bit, int start);
+void print_log_topic(FILE *fp, char name[]);
+int pget_test(FILE *fp, level input[], int npi, int nbit);
+void printfault(FILE *fp, FAULTPTR f, bool mode);
+void print_gate(register GATEPTR gut);
+void sprint_gate(register GATEPTR gut);
+void print_faultlist(FILE *fp, FAULTPTR *flist, int no, bool mode);
+
+void printgatename(FILE *fp, register GATEPTR gate, char wmode);
+void printionames(FILE *fp, int array[], register int n, char *head, register char wmode, register char iomode);
+void printgate(FILE *fp, register GATEPTR gate, char wmode);
+level logiclevel(register level V0, register level V1, register int n);
+void printiovalues(FILE *fp, int array[], int n, char iomode, char gmode, int bit);
+void printgatevalues(FILE *fp, register GATEPTR gut, int n, char gmode);
+void printfaultlist(FILE *fp, bool wmode);
+void print_net(FILE *fp, char name[], char wmode);
+int count_events(register FAULTPTR f);
+void print_event(FILE *file, FAULTPTR f, char mode);
+void print_event_tree(FILE *file, EVENTPTR event, char mode);
+void DFSWalk(GATEPTR child, char iomode);
+int FindUnobservableGates(FILE *fp, status wflag, status iomode);

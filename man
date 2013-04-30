@@ -1,0 +1,289 @@
+
+***********************************************************************
+Copyright (C) 1991, Virginia Polytechnic & State University
+
+Welcome to ATALANTA (version 2.0) !
+
+***********************************************************************/
+|
+
+
+
+----------------- User's Guide for ATALANTA --------------------------
+
+NAME:	atalanta --- Automatic Test Pattern Generator for stuck-at 
+		     faults in combinational circuits
+
+SYNOPSIS: atalanta [options] circuit_file [> outfile]
+
+OPTIONS: Several options are available for atalanta.
+         If an option is not specified, the default value is used.
+
+-A       Diagnostic mode
+         Atalanta derives all test patterns for each fault.
+         In this option, all unspecified inputs are left unknown, and
+         fault simulation is not performed.
+         (default: Normal test generation mode)
+-D n     Diagnostic mode
+         Atalanta derives n test patterns for each fault.
+         In this option, all unspecified inputs are left unknown, and
+         fault simulation is not performed. If both -A and -D option
+         are specified, -D option is applied.
+         (default: Normal test generation mode)
+-b n	 The number of maximum backtrackings for the FAN 
+	 algorithm phase 1. (default: -b 10)
+-B n	 If -B n (n>0) option is specified, atalanta generates test
+	 patterns in two phases. In phase 1, static unique path 
+	 sensitization is employed. If the test generation for a
+	 target fault is aborted in phase 1, the test generation
+	 is tried in phase 2. In phase 2, dynamic unique path
+	 sensitization is employed. If n=0, phase 2 is not performed.
+	 If n>0, phase 2 test generation is performed with the
+	 backtrack limit of n.
+	 (default: -B 0, i.e., phase 2 is not performed.)
+-f fn    Faults are read from the file fn. 
+	 This option is available only for ISCAS89 netlist format.
+         (default: faults are generated internally.)
+-h f     Displays the fault list format
+-h g     Displays the on-line user's guide.
+-h n     Displays an example netlist format.
+-h t     Displays an example test pattern file.
+-h a     Displays the entire on-line manual file.
+         (default: no manual is displayed)
+-H       HOPE, which is a parallel fault fault simulator, is employed
+         for fault simulation. In this option, three logic values (0, 1
+         and X), instead of two logic values (0 and 1), are employed.
+         Due to the embedding of the unknown logic value and the parallel
+         fault fault simulation algorithm, the test generation time is
+         slower than the default mode.)
+         (default: FSIM, which is a parallel pattern fault simulator,
+         is employed, and two logic values are used.)
+-l fn    Log file is created.
+	 (default: no logfile is created)
+-L       Static learning is performed. (default: no learning)
+-c n     Atalanta compacts test patterns using two different 
+         methods: reverse order compaction and shuffling 
+         compaction. First, test patterns are applied 
+         in the reverse order and fault simulated (reverse order 
+         compaction). Second, test patterns are shuffled randomly 
+         and fault simulated (shuffling compaction). During the fault 
+         simulations, all the test patterns which do not detect a 
+         new fault are eliminated. The option -c n specifies 
+         the limit of shuffling compaction. If n>0, shuffling 
+         compaction is terminated if n consecutive shuffles
+         do not drop a test pattern. If n=0, shuffling
+         compaction is not included and compaction is done only 
+         by the reverse order fault simulation.
+         (default: -c 2)
+-N       Test compaction is not performed.
+         (default: -c 2)
+-r n	 Random Pattern Testing (RPT) Session is included before
+	 deterministic test pattern generation session.
+         The RPT session stops if any n consecutive packets of
+         32 random patterns do not detect any new fault.
+	 If n=0, the RPT session is not included.
+	 (default: -r 16)
+-s n	 Initial seed for the random number generator (random()).
+	 If n=0, the initial seed is the current time.
+	 (default: -s 0)
+-t fn    Test patterns are put into the file "fn".
+	 (default: *.test for a circuit named *.bench)
+-u       Atalanta prints out all aborted fauts in a file. The name of this
+         file is <ckt>.ufaults. In default, all identified redundant faults
+         are not included in the file, but you can include them using the
+         option -v. Note that atalanta does not update a fault file if one
+         already exists in the run directory. This fault list file can
+         be directly read by atalanta or hope.
+         (default: no file is created)
+-U fn    The same as -u, but atalanta writes aborted faults to the given
+         file name.
+         (default: no file is created)
+-v       Atalanta prints out all identified redundant faults as well as
+         aborted fauts in a file. If -U fn option is not given, Atalanta
+         prints out the faults in a default file, <ckt>.ufaults.
+         (default: no file is created)
+-Z       Atalanta derives one test pattern for each fault. In this option,
+         no fault simulation is performed during the entire test generation
+         (including random pattern test generation session, deterministic
+         test generation session and test compaction session). All unspecified
+         inputs are left unknown.
+-0, -1, -X, -R: During test generation, some inputs can be unspecified.
+         Atalanta provides various options to set these unspecified inputs
+         into a certain value. The options are described below.
+         -0    Unspecified inputs are set to logic 0.
+         -1    Unspecified inputs are set to logic 1.
+         -R    Unspecified inputs are set to logic 0 or logic 1 randomly.
+         -X    Unspecified inputs are left to unknown (X).
+         (default: -R)
+
+OUTPUTS: In default mode, one file is created. The summary 
+	 of the test pattern generation is reported to the 
+	 standard output and the test patterns are stored in
+	 the circuit_name.test file. If -l option 
+	 is specified, atalanta creates a log file. 
+	 The log file contains more detailed information
+	 on the test pattern generation result.
+
+ON-LINE HELP: Type atalanta to see the available on-line
+         help command.
+
+EXAMPLES:
+	atalanta c432.bench
+	   --- generates test patterns for the circuit c432.bench
+	       with default options (i.e., the same as
+	       atalanta -r 16 -R -s 0 -b 10 -B 20 -c 2 -t c432.test 
+       	       c432.bench).
+	       The generated test patterns are stored in file 
+	       c432.test and the summary of the test pattern
+	       is reported to the standard output (CRT terminal).
+
+        atalanta -A -f c432.flt c432.bench
+           --- Diagnostic mode run
+               reads the fault list from the file c432.flt, and
+               generates all test patterns for each fault.
+
+        atalanta -D 2 c432.bench
+           --- Diagnostic mode run
+               Generates n test patterns for each fault.
+
+
+|
+
+
+NETLIST FORMAT:
+
+	      The input netlist format for atalanta is ISCAS89 
+	netlist format except for the following two cases.
+	The first line should be # followed by the name of 
+	the circuit. The lines beginning with # excluding
+	the first line are comment lines and ignored. These
+	comment lines may be put into any part of the netlist.
+	It should be noted that the order of gates appearing
+	in the netlist is not significant.
+	The name of gates can be a string of alpha-numeric
+	characters (0-9, A-Z, a-z, _, [, or ]).
+
+	ISCAS85 circuits translated in ISCAS89 netlist
+	format are stored in directory ISCAS85. The name of a 
+	circuit in ISCAS89 netlist format is circuit_name.bench.
+
+        ********************************************************
+	*   The original ISCAS85 netlist format is no longer   *
+	*   available in atalanta.                             *
+        ********************************************************
+
+	      Example netlists of the circuit c17 written in
+	ISCAS89 netlist format is shown below.
+
+
+EXAMPLE: ISCAS89 NETLIST FORMAT (c17.bench)
+--------------------------------------------------------------------
+# c17
+# 5 inputs
+# 2 outputs
+# 0 inverters
+# 6 gates ( 6 NANDs )
+
+INPUT(1)
+INPUT(2)
+INPUT(3)
+INPUT(6)
+INPUT(7)
+
+OUTPUT(22)
+OUTPUT(23)
+
+10 = NAND(1, 3)
+11 = NAND(3, 6)
+16 = NAND(2, 11)
+19 = NAND(11, 7)
+22 = NAND(10, 16)
+23 = NAND(16, 19)
+-------------------------------------------------------------------
+
+
+
+MANAGEABLE GATES:
+
+-------------------------------------------------------
+   syntax                   gate type
+-------------------------------------------------------
+   INPUT                    primary input
+   OUTPUT                   primary output
+   AND                      and gate
+   NAND                     nand gate
+   OR                       or gate
+   NOR                      nor gate
+   XOR                      2 input exclusive-or gate
+   BUFF or BUF              buffer
+   NOT                      inverter
+-------------------------------------------------------
+* Gate types can be also written in lower case.
+
+
+|
+
+
+TEST PATTERN FILE:
+
+	       The line beginning with * is a comment line and
+	ignored. Each test pattern begins after a colon (:).
+	For an n input circuit, only the n bits following :
+	are significant, and the remaining bits, if any, are
+	ignored. The j'th bit of a test pattern is the value 
+	of the j'th input of the circuit (in terms of their
+	appearance in the circuit). For example, c17 has five
+	inputs named input1, input2, input3, input6 and input7
+	which appear in the order in the netlist. The first bit
+	of a test pattern is the value for input1, the second 
+	for input2, ..., and the last for input7.
+
+
+EXAMPLE: TEST PATTERN FILE FOR C17
+
+___________________________________________________________
+* Name of circuit:  c17
+
+   1: 01010
+   2: 11110
+   3: 10101
+   4: 00111
+   5: 10010
+   6: 00101
+__________________________________________________________
+
+
+|
+
+
+
+FAULT LIST FILE:
+ 
+               ATALANTA can read the fault list file supplied
+        by the user. When the option "-f fn" is specified,
+        the fault list is read from the file "fn". (In default,
+        the fault list is created internally.)
+ 
+        An example of the fault list file is shown below:
+ 
+        ------ EXAMPLE: A FAULT LIST FILE ----------------------
+        gate_A->gate_B /1
+        gate_A->gate_B /0
+        gate_A /1
+        gate_B /1
+        --------------------------------------------------------
+ 
+               In the above example, gate_A and gate_B are the name
+        of gates. The first line, "gate_A->gate_B /1" describes
+        the stuck-at 1 fault on the gate_B input line, which
+        is connected to gate_A. Similarly, the second line,
+        "gate_A->gate_B /0" describes the stuck-at 0 fault on the
+        gate B input which is connected to gate_A. The third and
+        fourth lines describe the stuck-at 1 faults on the gate_A
+        output and the gate_B output, respectively.
+ 
+        ******************* Note **********************************
+        No fault collapsing is performed under the option -f. Hence,
+        users should provide the collapsed fault list.
+        ***********************************************************
+

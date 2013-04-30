@@ -1,0 +1,27 @@
+---- g_evalGatesStack Matches (28 in 3 files) ----
+Global.h:		  g_evalGatesStack,		/* STEM_LIST to be simulated */
+Io.cpp:				 g_evalGatesStack, 		  /* STEM_LIST to be simulated */
+Io.cpp:	if ((g_evalGatesStack.list = (GATEPTR *)malloc((unsigned)(sizeof(GATEPTR) * iNoGate))) == NULL)
+Ppsfp.cpp:				 g_evalGatesStack, 		  /* STEM_LIST to be simulated */
+Ppsfp.cpp:	j = g_evalGatesStack.last + 1;
+Ppsfp.cpp:	clear(g_evalGatesStack);
+Ppsfp.cpp:		gut = g_evalGatesStack.list[i];
+Ppsfp.cpp:			push(g_evalGatesStack, gut);
+Ppsfp.cpp:	clear(g_evalGatesStack);
+Ppsfp.cpp:			push(g_evalGatesStack, pGate); //PO(outCount == 0) || FANOUT(outCount >= 2)
+Ppsfp.cpp:	//pGate->changed == 1 ------------> g_evalGatesStack
+Ppsfp.cpp:	j = g_evalGatesStack.last;
+Ppsfp.cpp:	clear(g_evalGatesStack);
+Ppsfp.cpp:		pGate = g_evalGatesStack.list[i];
+Ppsfp.cpp:			push(g_evalGatesStack, pGate);
+Ppsfp.cpp:	updateEvalStackByFaultyStack(); //g_faultyGatesStack -------> g_evalGatesStack
+Ppsfp.cpp:	//g_evalGatesStack -----> g_activeStemsStack & pGate->observe
+Ppsfp.cpp:	//g_evalGatesStack -------------------> outCount == 0 || fANOUT(outCount >= 2)
+Ppsfp.cpp:	for (i = 0; i <= g_evalGatesStack.last; i++) //don't pop g_evalGatesStack
+Ppsfp.cpp:		pGate = g_evalGatesStack.list[i];
+Ppsfp.cpp:		if (!pGate->freach) //g_evalGatesStack <--------> freach
+Ppsfp.cpp:	//g_evalGatesStack -----> g_activeStemsStack & pGate->observe
+Ppsfp.cpp:	//g_evalGatesStack -------------------> outCount == 0 || fANOUT(outCount >= 2)
+Ppsfp.cpp:	for (i = 0; i <= g_evalGatesStack.last; i++) //don't pop g_evalGatesStack
+Ppsfp.cpp:		pGate = g_evalGatesStack.list[i];
+Ppsfp.cpp:		if (!pGate->freach) //g_evalGatesStack <--------> freach

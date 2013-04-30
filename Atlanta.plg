@@ -1,0 +1,90 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Atalanta - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP5DB8.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/Atlanta.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\atalanta.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\define_fault_list.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\error.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\fan.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\fsim.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\hash.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\help.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\io.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\learn.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\lsim.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\pio.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\ppsfp.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\print.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\random.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\read_cct.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\sim.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\stem.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\structure.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\testability.cpp"
+"C:\Users\Administrator\Desktop\Atalanta_Stuck_Compact_20130315\truth.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP5DB8.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP5DC9.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/Atlanta.pdb" /debug /machine:I386 /out:"Debug/Atlanta.exe" /pdbtype:sept 
+.\Debug\atalanta.obj
+.\Debug\define_fault_list.obj
+.\Debug\error.obj
+.\Debug\fan.obj
+.\Debug\fsim.obj
+.\Debug\hash.obj
+.\Debug\help.obj
+.\Debug\io.obj
+.\Debug\learn.obj
+.\Debug\lsim.obj
+.\Debug\pio.obj
+.\Debug\ppsfp.obj
+.\Debug\print.obj
+.\Debug\random.obj
+.\Debug\read_cct.obj
+.\Debug\sim.obj
+.\Debug\stem.obj
+.\Debug\structure.obj
+.\Debug\testability.obj
+.\Debug\truth.obj
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP5DC9.tmp"
+<h3>Output Window</h3>
+Compiling...
+atalanta.cpp
+define_fault_list.cpp
+error.cpp
+fan.cpp
+fsim.cpp
+hash.cpp
+help.cpp
+io.cpp
+learn.cpp
+lsim.cpp
+pio.cpp
+ppsfp.cpp
+print.cpp
+random.cpp
+read_cct.cpp
+sim.cpp
+stem.cpp
+structure.cpp
+testability.cpp
+truth.cpp
+Linking...
+Debug/Atlanta.exe : warning LNK4084: total image size 1631461376 exceeds max (268435456); image may not run
+
+
+
+<h3>Results</h3>
+Atlanta.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>
