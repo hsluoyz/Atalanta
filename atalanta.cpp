@@ -164,9 +164,9 @@ level g_test_store1[MAXTEST / 10][MAXPI + 1];
 
 
 /* default parameters setting */
-char g_strCctPathFileName[100] = "", g_strTestFileName[100] = "", g_strLogFileName[100] = "", g_strVecFileName[100] = "";
-char g_strFaultFileName[100] = "";
-char g_strCctFileName[100] = "";
+char g_strCctPathFileName[FILENAME_MAX] = "", g_strTestFileName[FILENAME_MAX] = "", g_strLogFileName[FILENAME_MAX] = "", g_strVecFileName[FILENAME_MAX] = "";
+char g_strFaultFileName[FILENAME_MAX] = "";
+char g_strCctFileName[FILENAME_MAX] = "";
 char nameufaults[MAXSTRING] = "";
 char inputmode = 'd';		/* default mode */
 char rptmode = 'y';		/* RPT mode ON */

@@ -84,7 +84,7 @@ extern FILE *g_fpLogFile;
 extern int *g_PrimaryIn, *g_PrimaryOut;
 extern FAULTPTR *g_pFaultList;
 extern STACKTYPE g_stack;
-extern char g_strVecFileName[100];
+extern char g_strVecFileName[FILENAME_MAX];
 
 #define checkbit(word,nth) ((word&BITMASK[nth])!=ALL0)
 #define setbit(word,nth) (word|=BITMASK[nth])

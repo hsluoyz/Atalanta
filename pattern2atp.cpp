@@ -18,7 +18,7 @@ int main3(int argc, char *argv[])
 	int i = 0,j = 0;
 	int bit_s, bit_vector, num_pattern;
 	int start_flag = 0;
-	char filename[100], s[10000], launch_vector[10000], capture_vector[10000];
+	char filename[FILENAME_MAX], s[10000], launch_vector[10000], capture_vector[10000];
 	char tmp_s[10000];
 	char *position;
 
