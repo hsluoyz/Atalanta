@@ -101,9 +101,9 @@
 // extern caddr_t sbrk();
 
 /* default parameters setting */
-char name1_f[100] = "",name2_f[100] = "",name3_f[100] = "",commandfile_f[100];
-char namecct_f[100] = "";
-char faultname_f[100] = "";
+char name1_f[FILENAME_MAX] = "",name2_f[FILENAME_MAX] = "",name3_f[FILENAME_MAX] = "",commandfile_f[FILENAME_MAX];
+char namecct_f[FILENAME_MAX] = "";
+char faultname_f[FILENAME_MAX] = "";
 char inputmode_f = 'd';		/* default mode */
 char rptmode_f = 'y';		/* RPT mode ON */
 char logmode_f = 'n';		/* LOG off */
